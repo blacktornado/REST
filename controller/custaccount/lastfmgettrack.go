@@ -118,6 +118,11 @@ func GetTopTrack(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
+		if len(data.Tracks.Track) == 0 {
+			http.Error(w, "Empty Data Set", http.StatusNoContent)
+			return
+		}
+
 		respdatas := make(map[int]Foo)
 		for i, track := range data.Tracks.Track {
 			respdatas[i] = Foo{TrackName: track.Name, ArtistName: track.Artist.Name, Image: track.Image[i].Text}

@@ -99,17 +99,23 @@ func GetTopTrackL(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if country, ok := keyVal["country"]; ok {
-		response, err := http.Get("https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=2&country=" + country + "&f_has_lyrics=1&apikey=" + MUAPIKEY)
+		countrycode := firstN(country, 2) //get first two letters only
+		response, err := http.Get("https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=1&country=" + countrycode + "&f_has_lyrics=1&apikey=" + MUAPIKEY)
 		if err != nil {
 			http.Error(w, "Cannot Parse Body. Error", http.StatusNoContent)
 			return
 		}
 
 		decoder := json.NewDecoder(response.Body)
+
 		var data Message
 		err = decoder.Decode(&data)
 		if err != nil {
 			http.Error(w, " Something Went Wrong , Internal Server Error", http.StatusInternalServerError)
+			return
+		}
+		if len(data.Message.Body.Track_List) == 0 {
+			http.Error(w, "Empty Data Set", http.StatusNoContent)
 			return
 		}
 		/****TRACK INFO ENDS HERE ******/
@@ -143,4 +149,15 @@ func GetTopTrackL(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	http.Error(w, "Invalid Data , Error ", http.StatusUnprocessableEntity)
+}
+
+func firstN(s string, n int) string {
+	i := 0
+	for j := range s {
+		if i == n {
+			return s[:j]
+		}
+		i++
+	}
+	return s
 }
