@@ -49,4 +49,5 @@ CREATE TABLE `cook-accounts` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
 
+![lastfm_topTrackOnly](https://github.com/blacktornado/REST/assets/8749326/7d8fcff9-baeb-4c17-983d-ba1d09a0188f)
 
