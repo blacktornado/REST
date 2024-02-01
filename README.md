@@ -15,6 +15,10 @@ Get Musical Track Name & Artist Name with respect to Country (It can be extended
 HTTP REQUEST **POST https://www.last.fm/api/getTopTrack**
 JSON Body - {"country":"india"} **full country name**
 
+/**** TURN OFF DB USAGE  *****/
+REMOVE COMMENT FROM LINE 5 & 9 FROM main.go to turn ON DB FOR TEST DATA
+
+
 Get Musical Track Name & Artist Name, Album Name, Lyrics with respect to Country (It can be extended with other functionality like Pagination and Limit)
 **Now Only Max 2 Record is fetched**
 HTTP REQUEST **POST https://www.last.fm/api/getTopTrackLyrics**

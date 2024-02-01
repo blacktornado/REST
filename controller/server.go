@@ -11,7 +11,7 @@ func Start() {
 	var mux = http.NewServeMux()
 	mux.HandleFunc("/api/getTopTrack", controller.GetTopTrack)
 	mux.HandleFunc("/api/getTopTrackLyrics", controller.GetTopTrackL)
-	mux.HandleFunc("/api/posts", controller.GetAllPosts)
+	mux.HandleFunc("/api/getCook", controller.GetAllCook)
 	wrappedMux := middleware.NewLoggerMiddleware(mux)
 	fmt.Printf("routerr initialized and listening on 3200\n")
 	http.ListenAndServe(":3200", wrappedMux)

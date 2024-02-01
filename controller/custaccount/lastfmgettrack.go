@@ -45,8 +45,8 @@ type Artist_info struct {
 	Url  string
 }
 
-/**** JUST A TEST METHOD TO TEST MYSQL FETCH RECORD   ****/
-func GetAllPosts(w http.ResponseWriter, r *http.Request) {
+/**** TO MAKE IT WORK COMMENT OFF main.go line 5 & 9 JUST A TEST METHOD TO TEST MYSQL FETCH RECORD   ****/
+func GetAllCook(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	posts, err := model.GetAllCustomer()

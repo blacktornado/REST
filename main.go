@@ -2,10 +2,10 @@ package main
 
 import (
 	"rest/controller"
-	"rest/model"
+	//"rest/model"
 )
 
 func main() {
-	model.Init()
+	//model.Init()
 	controller.Start()
 }

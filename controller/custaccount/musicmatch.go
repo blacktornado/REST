@@ -99,8 +99,8 @@ func GetTopTrackL(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if country, ok := keyVal["country"]; ok {
-		countrycode := firstN(country, 2) //get first two letters only
-		response, err := http.Get("https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=1&country=" + countrycode + "&f_has_lyrics=1&apikey=" + MUAPIKEY)
+		countrycode := getfirstNLetter(country, 2) //get first two letters only
+		response, err := http.Get("https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=2&country=" + countrycode + "&f_has_lyrics=1&apikey=" + MUAPIKEY)
 		if err != nil {
 			http.Error(w, "Cannot Parse Body. Error", http.StatusNoContent)
 			return
@@ -151,7 +151,7 @@ func GetTopTrackL(w http.ResponseWriter, r *http.Request) {
 	http.Error(w, "Invalid Data , Error ", http.StatusUnprocessableEntity)
 }
 
-func firstN(s string, n int) string {
+func getfirstNLetter(s string, n int) string {
 	i := 0
 	for j := range s {
 		if i == n {
