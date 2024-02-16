@@ -1,6 +1,9 @@
 # REST
 Golang Rest Api 
 
+***Before Moving ON KINDLY GENERATE YOUR API KEY FROM HERE AND PUT IT IN config/.env file with key MUMATCH_API_KEY*** 
+***https://developer.musixmatch.com/signup***
+
 A Basic Level Restful Api with Golang that calls two 3rd Party Api's "Last FM" & "musixmatch"
 https://www.last.fm/api
 https://developer.musixmatch.com/
